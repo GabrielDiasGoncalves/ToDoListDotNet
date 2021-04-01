@@ -23,5 +23,10 @@ namespace ToDoList.UI.Views
         {
             InitializeComponent();
         }
+
+        public void AdicionarTarefa(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Adicionado");
+        }
     }
 }
