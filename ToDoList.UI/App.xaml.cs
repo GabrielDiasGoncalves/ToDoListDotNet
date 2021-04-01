@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Services;
 using ToDoList.Infra.Migrations;
+using ToDoList.UI.Views;
 
 namespace ToDoList.UI
 {
@@ -17,12 +14,29 @@ namespace ToDoList.UI
     /// </summary>
     public partial class App : Application
     {
-        private readonly MigrationService _service;
+        private ServiceProvider _serviceProvider;
 
         public App()
         {
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            _serviceProvider = services.BuildServiceProvider();
+        }
+
+        private void ConfigureServices(ServiceCollection services)
+        {
+            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MigrationService>();
+        }
+
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            var mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow.Show();
+
+            var migrationService = _serviceProvider.GetService<MigrationService>();
+
             var connectionString = "Data Source=db_todo.db; Version=3;";
-            _service = new MigrationService();
 
             var migrations = new List<IMigration>()
             {
@@ -30,7 +44,7 @@ namespace ToDoList.UI
                 new CriarTabelaTarefa(connectionString)
             };
 
-            _service.ExecutarMigrations(migrations);
+            migrationService.ExecutarMigrations(migrations);
         }
     }
 }
