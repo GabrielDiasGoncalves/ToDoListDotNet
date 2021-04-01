@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
+using ToDoList.Domain.Interfaces;
 
 namespace ToDoList.Domain.Services
 {
     public class MigrationService
     {
-        public void ExecutarMigrations(ICollection<Interfaces.IMigration> migrations)
+        public void ExecutarMigrations(ICollection<IMigration> migrations)
         {
             foreach (var item in migrations)
                 item.Up();

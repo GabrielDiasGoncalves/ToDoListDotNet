@@ -21,11 +21,13 @@ namespace ToDoList.UI
 
         public App()
         {
+            var connectionString = "Data Source=db_todo.db; Version=3;";
             _service = new MigrationService();
 
             var migrations = new List<IMigration>()
             {
-                new CriarBanco()
+                new CriarBanco(),
+                new CriarTabelaTarefa(connectionString)
             };
 
             _service.ExecutarMigrations(migrations);
