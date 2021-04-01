@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data.SQLite;
 
-using Dapper;
-
 using ToDoList.Domain.Interfaces;
 
 namespace ToDoList.Infra.Migrations

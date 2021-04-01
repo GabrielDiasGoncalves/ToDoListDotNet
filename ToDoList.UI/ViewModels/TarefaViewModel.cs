@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+
 using ToDoList.Domain.Models;
 
 namespace ToDoList.UI.ViewModels
@@ -11,6 +13,7 @@ namespace ToDoList.UI.ViewModels
     public class TarefaViewModel : INotifyPropertyChanged
     {
         private Tarefa _tarefa;
+        private Page _pageAddTarefa;
 
         public TarefaViewModel()
         {
@@ -24,6 +27,16 @@ namespace ToDoList.UI.ViewModels
             {
                 _tarefa = value;
                 OnPropertyChanged(nameof(Tarefa));
+            }
+        }
+
+        public Page PageAddTarefa 
+        {
+            get => _pageAddTarefa;
+            set
+            {
+                _pageAddTarefa = value;
+                OnPropertyChanged(nameof(PageAddTarefa));
             }
         }
 
