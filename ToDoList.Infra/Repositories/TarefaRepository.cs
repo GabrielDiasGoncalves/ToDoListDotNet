@@ -9,21 +9,21 @@ using ToDoList.Domain.Models;
 
 namespace ToDoList.Infra.Repositories
 {
-    public class TarefaRepository
+    public class TarefaRepository : RepositoryBase
     {
+        public TarefaRepository(string connectionString) : base (connectionString) { }
 
-
-        public void AdicionarTarefa(Tarefa tarefa)
+        public async Task AdicionarTarefaAsync(Tarefa tarefa)
         {
             try
             {
-                using(var conexao = new SQLiteConnection("string connection"))
+                using(var conexao = new SQLiteConnection(ConnectionString))
                 {
                     conexao.Open();
 
                     var query = "INSERT INTO tb_tarefa (Nome, Descricao, DataInicio, DataTermino) VALUES (@Nome, @Descricao, @DataInicio, @DataTermino)";
 
-                    var resultado = conexao.Execute(query, tarefa);
+                    var resultado = await conexao.ExecuteAsync(query, tarefa);
                 }
             }
             catch (Exception e)

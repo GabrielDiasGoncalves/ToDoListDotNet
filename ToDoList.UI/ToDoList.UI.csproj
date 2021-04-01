@@ -59,6 +59,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\TarefaViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +95,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoList.Domain\ToDoList.Domain.csproj">
+      <Project>{ffe6911f-3dd6-4fdb-925e-8527f0dfae8d}</Project>
+      <Name>ToDoList.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDoList.Infra\ToDoList.Infra.csproj">
+      <Project>{b447b9d7-a56c-4b46-8702-d99150019eb4}</Project>
+      <Name>ToDoList.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

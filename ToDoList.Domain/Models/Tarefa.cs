@@ -1,17 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ToDoList.Domain.Models
 {
-    public class Tarefa
+    public class Tarefa : INotifyPropertyChanged
     {
-        public int ID { get; set; }
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
+        private int _id;
+        private string _nome;
+        private string _descricao;
+
+        public int ID 
+        { 
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
+
+        public string Nome 
+        { 
+            get => _nome;
+            set
+            {
+                _nome = value;
+                OnPropertyChanged(nameof(Nome));
+            }
+        }
+
+        public string Descricao 
+        { 
+            get => _descricao;
+            set
+            {
+                _descricao = value;
+                OnPropertyChanged(nameof(Descricao));
+            }
+        }
+        
         public DateTime DataInicio { get; set; }
         public DateTime DataTermino { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string nomePropriedade)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
+        }
     }
 }

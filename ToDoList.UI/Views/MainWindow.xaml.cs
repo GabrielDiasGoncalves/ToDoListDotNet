@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToDoList.Infra.Repositories;
+using ToDoList.UI.ViewModels;
 
 namespace ToDoList.UI.Views
 {
@@ -19,16 +21,22 @@ namespace ToDoList.UI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public TarefaViewModel ViewModel { get; private set; }
+        private readonly TarefaRepository _repository;
 
         public MainWindow()
         {
+            ViewModel = new TarefaViewModel();
+            _repository = new TarefaRepository("");
+            DataContext = this;
             InitializeComponent();
         }
 
-        public void AdicionarTarefa(object sender, RoutedEventArgs e)
+        public async void AdicionarTarefa(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Adicionado");
+            
+            await _repository.AdicionarTarefaAsync(ViewModel.Tarefa);
         }
     }
 }
