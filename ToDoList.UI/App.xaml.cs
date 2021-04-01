@@ -5,7 +5,9 @@ using System.Windows;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Services;
 using ToDoList.Infra.Migrations;
+using ToDoList.UI.ViewModels;
 using ToDoList.UI.Views;
+using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI
 {
@@ -27,6 +29,8 @@ namespace ToDoList.UI
         {
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MigrationService>();
+            services.AddSingleton<PageAdicionarTarefa>();
+            services.AddSingleton<TarefaViewModel>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)

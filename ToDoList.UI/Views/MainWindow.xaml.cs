@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ToDoList.Infra.Repositories;
 using ToDoList.UI.ViewModels;
+using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI.Views
 {
@@ -24,9 +25,9 @@ namespace ToDoList.UI.Views
         public TarefaViewModel ViewModel { get; private set; }
         private readonly TarefaRepository _repository;
 
-        public MainWindow()
+        public MainWindow(TarefaViewModel viewModel)
         {
-            ViewModel = new TarefaViewModel();
+            ViewModel = viewModel;
             _repository = new TarefaRepository("");
             DataContext = this;
             InitializeComponent();

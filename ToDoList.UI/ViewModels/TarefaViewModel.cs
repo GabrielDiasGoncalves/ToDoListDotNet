@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 using ToDoList.Domain.Models;
+using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI.ViewModels
 {
@@ -15,9 +16,10 @@ namespace ToDoList.UI.ViewModels
         private Tarefa _tarefa;
         private Page _pageAddTarefa;
 
-        public TarefaViewModel()
+        public TarefaViewModel(PageAdicionarTarefa page)
         {
             Tarefa = new Tarefa();
+            _pageAddTarefa = page;
         }
 
         public Tarefa Tarefa 
