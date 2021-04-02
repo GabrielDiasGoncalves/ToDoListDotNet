@@ -6,10 +6,8 @@ using System.Windows;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Services;
 using ToDoList.Infra.Migrations;
-using ToDoList.Infra.Repositories;
 using ToDoList.UI.ViewModels;
 using ToDoList.UI.Views;
-using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI
 {
@@ -27,15 +25,18 @@ namespace ToDoList.UI
             _serviceProvider = services.BuildServiceProvider();
         }
 
-        private void ConfigureServices(ServiceCollection services)
+        private void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = ConfigurationManager.AppSettings["connectionString"].ToString();
+            var connectionString = ConfigurationManager.AppSettings["connectionString"];
 
-            services.AddSingleton<MainWindow>();
-            services.AddSingleton<MigrationService>();
-            services.AddSingleton<PageAdicionarTarefa>();
-            services.AddSingleton<TarefaViewModel>();
-            services.AddSingleton(new TarefaRepository(connectionString));
+            services.AdicionarJanelas();
+            services.AdicionarPaginas();
+
+            services.AdicionarServicos();
+            
+            services.AdicionarViewModels();
+
+            services.AdicionarRepositorios(connectionString);
         }
 
         private void OnStartup(object sender, StartupEventArgs e)

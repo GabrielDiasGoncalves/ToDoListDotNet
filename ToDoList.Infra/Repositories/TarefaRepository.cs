@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
 using System.Data.SQLite;
+using System.Threading.Tasks;
+
+using Dapper;
+
 using ToDoList.Domain.Models;
 
 namespace ToDoList.Infra.Repositories
@@ -17,7 +17,7 @@ namespace ToDoList.Infra.Repositories
         {
             try
             {
-                using(var conexao = new SQLiteConnection(ConnectionString))
+                using (var conexao = new SQLiteConnection(ConnectionString))
                 {
                     conexao.Open();
 
