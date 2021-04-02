@@ -13,7 +13,7 @@ namespace ToDoList.UI.ViewModels
     public class TarefaViewModel : INotifyPropertyChanged
     {
         private Tarefa _tarefa;
-        private Page _pageAddTarefa;
+        private PageAdicionarTarefa _pageAddTarefa;
         private Visibility _popUpAdicionarTarefa;
         private Visibility _gridSemTarefaVisibility;
         private Visibility _gridComTarefasVisibility;
@@ -24,6 +24,7 @@ namespace ToDoList.UI.ViewModels
             Tarefa = new Tarefa();
             PageAddTarefa = page;
             PopUpAdicionarTarefa = Visibility.Collapsed;
+            PageAddTarefa.SetViewModel(this);
         }
 
         public Tarefa Tarefa 
@@ -36,7 +37,7 @@ namespace ToDoList.UI.ViewModels
             }
         }
 
-        public Page PageAddTarefa 
+        public PageAdicionarTarefa PageAddTarefa 
         {
             get => _pageAddTarefa;
             set

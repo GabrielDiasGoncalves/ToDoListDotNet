@@ -6,7 +6,6 @@ using System.Windows;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Services;
 using ToDoList.Infra.Migrations;
-using ToDoList.UI.ViewModels;
 using ToDoList.UI.Views;
 
 namespace ToDoList.UI

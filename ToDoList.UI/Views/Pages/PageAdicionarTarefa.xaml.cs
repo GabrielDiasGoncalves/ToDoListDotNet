@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.UI.ViewModels;
 
 namespace ToDoList.UI.Views.Pages
 {
@@ -22,7 +23,22 @@ namespace ToDoList.UI.Views.Pages
     {
         public PageAdicionarTarefa()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        public TarefaViewModel ViewModel { get; private set; }
+
+        public void SetViewModel(TarefaViewModel viewModel)
+        {
+            if (viewModel == null) return;
+
+            ViewModel = viewModel;
+        }
+
+        private void Btn_Cancelar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ViewModel.PopUpAdicionarTarefa = Visibility.Collapsed;
         }
     }
 }

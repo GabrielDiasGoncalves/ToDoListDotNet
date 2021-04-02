@@ -4,9 +4,35 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ToDoList.UI.Views.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
       d:DesignHeight="450" d:DesignWidth="450">
     <Grid Background="Wheat">
-        <Label Content="Adicionar um novo item a minha lista" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Label Content="Adicionar tarefa" HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" />
+        <Border x:Name="Btn_Cancelar" MouseDown="Btn_Cancelar_MouseDown" Style="{StaticResource CancelBorder}" Cursor="Hand" HorizontalAlignment="Right">
+            <Viewbox>
+                <TextBlock Text="X" Foreground="White" />
+            </Viewbox>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Content="Nome: " Margin="5,6" />
+            <TextBox Grid.Column="1" Margin="5,6"/>
+            <Label Grid.Row="1" Content="Descrição" Margin="5,6" />
+            <Label Grid.Row="2" Content=" " Margin="5,6" />
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="5,5" MaxLines="5" TextWrapping="Wrap" />
+        </Grid>
     </Grid>
 </Page>

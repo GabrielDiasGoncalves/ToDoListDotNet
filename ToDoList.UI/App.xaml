@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:ToDoList.UI"
              Startup="OnStartup">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style x:Key="CancelBorder" TargetType="{x:Type Border}">
+                <Setter Property="Height" Value="25" />
+                <Setter Property="Width" Value="25" />
+                <Setter Property="BorderBrush" Value="Gray" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="2" />
+                <Setter Property="Background" Value="#FFE80C0C" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="8" Color="#FF818181" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

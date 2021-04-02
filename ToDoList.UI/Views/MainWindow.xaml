@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList.UI.Views"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        mc:Ignorable="d" Height="550" Width="420">
+        mc:Ignorable="d" Height="550" Width="420" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
