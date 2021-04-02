@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 using ToDoList.Domain.Models;
@@ -15,11 +14,13 @@ namespace ToDoList.UI.ViewModels
     {
         private Tarefa _tarefa;
         private Page _pageAddTarefa;
+        private Visibility _popUpAdicionarTarefa;
 
         public TarefaViewModel(PageAdicionarTarefa page)
         {
             Tarefa = new Tarefa();
-            _pageAddTarefa = page;
+            PageAddTarefa = page;
+            PopUpAdicionarTarefa = Visibility.Collapsed;
         }
 
         public Tarefa Tarefa 
@@ -42,11 +43,19 @@ namespace ToDoList.UI.ViewModels
             }
         }
 
+        public Visibility PopUpAdicionarTarefa 
+        { 
+            get => _popUpAdicionarTarefa;
+            set
+            {
+                _popUpAdicionarTarefa = value;
+                OnPropertyChanged(nameof(PopUpAdicionarTarefa));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string nomePropriedade)
-        {
+        private void OnPropertyChanged(string nomePropriedade) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
-        }
     }
 }

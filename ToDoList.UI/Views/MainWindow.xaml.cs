@@ -34,11 +34,9 @@ namespace ToDoList.UI.Views
 
         public TarefaViewModel ViewModel { get; private set; }
 
-        public async void AdicionarTarefa(object sender, RoutedEventArgs e)
+        public void AdicionarTarefa(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Adicionado");
-            
-            await _repository.AdicionarTarefaAsync(ViewModel.Tarefa);
+            ViewModel.PopUpAdicionarTarefa = Visibility.Visible;
         }
     }
 }

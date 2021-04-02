@@ -30,8 +30,10 @@
                 <Label FontSize="18" Content="Você não tem tarefas listadas"  />
             </Grid>
         </Grid>
-        <Grid Visibility="Collapsed" Grid.RowSpan="2" Background="Black">
-            <Label Content="Adicionar Tarefa" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Grid Visibility="{Binding ViewModel.PopUpAdicionarTarefa}" Grid.RowSpan="2" Background="#dd909999">
+            <Border Margin="50" BorderThickness="1" CornerRadius="4">
+                <Frame Content="{Binding ViewModel.PageAddTarefa}" />
+            </Border>
         </Grid>
     </Grid>
 </Window>
