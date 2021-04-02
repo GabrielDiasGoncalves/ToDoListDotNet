@@ -31,5 +31,26 @@ namespace ToDoList.Infra.Repositories
                 Console.WriteLine(e.Message);
             }
         }
+
+        public List<Tarefa> RecuperarTodos()
+        {
+            try
+            {
+                using (var conexao = new SQLiteConnection(ConnectionString))
+                {
+                    conexao.Open();
+
+                    var query = "SELECT * FROM tb_tarefa;";
+
+                    var resultado = conexao.Query<Tarefa>(query).AsList();
+                    return resultado;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return new List<Tarefa>();
+            }
+        }
     }
 }

@@ -15,6 +15,9 @@ namespace ToDoList.UI.ViewModels
         private Tarefa _tarefa;
         private Page _pageAddTarefa;
         private Visibility _popUpAdicionarTarefa;
+        private Visibility _gridSemTarefaVisibility;
+        private Visibility _gridComTarefasVisibility;
+        private List<Tarefa> _tarefasCadastradas;
 
         public TarefaViewModel(PageAdicionarTarefa page)
         {
@@ -50,6 +53,48 @@ namespace ToDoList.UI.ViewModels
             {
                 _popUpAdicionarTarefa = value;
                 OnPropertyChanged(nameof(PopUpAdicionarTarefa));
+            }
+        }
+
+        public Visibility GridSemTarefaVisibility 
+        { 
+            get => _gridSemTarefaVisibility;
+            set
+            {
+                _gridSemTarefaVisibility = value;
+                OnPropertyChanged(nameof(GridSemTarefaVisibility));
+            }
+        }
+
+        public Visibility GridComTarefasVisibility 
+        {
+            get => _gridComTarefasVisibility;
+            set 
+            {
+                _gridComTarefasVisibility = value;
+                OnPropertyChanged(nameof(GridComTarefasVisibility));
+            }
+        }
+
+        public List<Tarefa> TarefasCadastradas 
+        { 
+            get => _tarefasCadastradas;
+            set 
+            {
+                if (value == null || value?.Count == 0)
+                {
+                    GridSemTarefaVisibility = Visibility.Visible;
+                    GridComTarefasVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    GridSemTarefaVisibility = Visibility.Collapsed;
+                    GridComTarefasVisibility = Visibility.Visible;
+                }
+
+                _tarefasCadastradas = value;
+
+                OnPropertyChanged(nameof(TarefasCadastradas));
             }
         }
 
