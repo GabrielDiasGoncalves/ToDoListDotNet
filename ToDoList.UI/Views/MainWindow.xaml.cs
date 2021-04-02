@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ToDoList.Infra.Repositories;
 using ToDoList.UI.ViewModels;
-using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI.Views
 {
@@ -39,6 +39,13 @@ namespace ToDoList.UI.Views
         public void AdicionarTarefa(object sender, RoutedEventArgs e)
         {
             ViewModel.PopUpAdicionarTarefa = Visibility.Visible;
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            var resultado = MessageBox.Show("Deseja sair?", "Sair", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+            e.Cancel = resultado == MessageBoxResult.No;
         }
     }
 }
