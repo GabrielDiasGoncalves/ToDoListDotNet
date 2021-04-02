@@ -22,16 +22,17 @@ namespace ToDoList.UI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public TarefaViewModel ViewModel { get; private set; }
         private readonly TarefaRepository _repository;
 
-        public MainWindow(TarefaViewModel viewModel)
+        public MainWindow(TarefaViewModel viewModel, TarefaRepository repository)
         {
             ViewModel = viewModel;
-            _repository = new TarefaRepository("");
+            _repository = repository;
             DataContext = this;
             InitializeComponent();
         }
+
+        public TarefaViewModel ViewModel { get; private set; }
 
         public async void AdicionarTarefa(object sender, RoutedEventArgs e)
         {
