@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+using ToDoList.Domain.Extensions;
 using ToDoList.Domain.Interfaces;
 
 namespace ToDoList.Domain.Services
@@ -8,8 +9,9 @@ namespace ToDoList.Domain.Services
     {
         public void ExecutarMigrations(ICollection<IMigration> migrations)
         {
-            foreach (var item in migrations)
-                item.Up();
+            migrations.ForEach(x => x.Up());
+            //foreach (var item in migrations)
+            //    item.Up();
         }
     }
 }
