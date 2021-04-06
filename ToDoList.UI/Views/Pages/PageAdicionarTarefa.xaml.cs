@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using ToDoList.Infra.Repositories;
 using ToDoList.UI.ViewModels;
 
 namespace ToDoList.UI.Views.Pages
@@ -21,9 +23,12 @@ namespace ToDoList.UI.Views.Pages
     /// </summary>
     public partial class PageAdicionarTarefa : Page
     {
-        public PageAdicionarTarefa()
+        private readonly TarefaRepository _repository;
+
+        public PageAdicionarTarefa(TarefaRepository repository)
         {
             DataContext = this;
+            _repository = repository;
             InitializeComponent();
         }
 
@@ -43,7 +48,7 @@ namespace ToDoList.UI.Views.Pages
 
         private void Btn_Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-
+            _repository.AdicionarTarefa(ViewModel.Tarefa);
         }
     }
 }

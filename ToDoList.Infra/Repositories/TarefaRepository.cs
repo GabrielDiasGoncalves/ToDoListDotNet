@@ -13,7 +13,7 @@ namespace ToDoList.Infra.Repositories
     {
         public TarefaRepository(string connectionString) : base (connectionString) { }
 
-        public async Task AdicionarTarefaAsync(Tarefa tarefa)
+        public void AdicionarTarefa(Tarefa tarefa)
         {
             try
             {
@@ -23,7 +23,8 @@ namespace ToDoList.Infra.Repositories
 
                     var query = "INSERT INTO tb_tarefa (Nome, Descricao, DataInicio, DataTermino) VALUES (@Nome, @Descricao, @DataInicio, @DataTermino)";
 
-                    var resultado = await conexao.ExecuteAsync(query, tarefa);
+                    var resultado = conexao.Execute(query, tarefa);
+                    Console.WriteLine(resultado);
                 }
             }
             catch (Exception e)
