@@ -40,5 +40,10 @@ namespace ToDoList.UI.Views.Pages
         {
             ViewModel.PopUpAdicionarTarefa = Visibility.Collapsed;
         }
+
+        private void Btn_Cadastrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
