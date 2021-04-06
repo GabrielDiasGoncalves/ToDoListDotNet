@@ -26,6 +26,7 @@ namespace ToDoList.Domain.Models
             {
                 _nome = value;
                 OnPropertyChanged(nameof(Nome));
+                OnPropertyChanged(nameof(IsValid));
             }
         }
 
@@ -36,11 +37,15 @@ namespace ToDoList.Domain.Models
             {
                 _descricao = value;
                 OnPropertyChanged(nameof(Descricao));
+                OnPropertyChanged(nameof(IsValid));
             }
         }
         
         public DateTime DataInicio { get; set; }
         public DateTime DataTermino { get; set; }
+
+        public bool IsValid =>
+            !string.IsNullOrWhiteSpace(Nome) && !string.IsNullOrWhiteSpace(Descricao);
 
         public event PropertyChangedEventHandler PropertyChanged;
 

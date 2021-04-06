@@ -48,6 +48,12 @@ namespace ToDoList.UI.Views.Pages
 
         private void Btn_Cadastrar_Click(object sender, RoutedEventArgs e)
         {
+            if (!ViewModel.Tarefa.IsValid)
+            {
+                MessageBox.Show("Favor fornecer os campos obrigatórios");
+                return;
+            }
+
             _repository.AdicionarTarefa(ViewModel.Tarefa);
         }
     }
