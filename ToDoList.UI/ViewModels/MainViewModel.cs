@@ -10,31 +10,19 @@ using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI.ViewModels
 {
-    public class TarefaViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
-        private Tarefa _tarefa;
         private PageAdicionarTarefa _pageAddTarefa;
         private Visibility _popUpAdicionarTarefa;
         private Visibility _gridSemTarefaVisibility;
         private Visibility _gridComTarefasVisibility;
         private List<Tarefa> _tarefasCadastradas;
 
-        public TarefaViewModel(PageAdicionarTarefa page)
+        public MainViewModel(PageAdicionarTarefa page)
         {
-            Tarefa = new Tarefa();
             PageAddTarefa = page;
+            PageAddTarefa.SetViewModelAnterior(this);
             PopUpAdicionarTarefa = Visibility.Collapsed;
-            PageAddTarefa.SetViewModel(this);
-        }
-
-        public Tarefa Tarefa 
-        { 
-            get => _tarefa;
-            set
-            {
-                _tarefa = value;
-                OnPropertyChanged(nameof(Tarefa));
-            }
         }
 
         public PageAdicionarTarefa PageAddTarefa 

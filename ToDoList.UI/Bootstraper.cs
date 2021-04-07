@@ -22,12 +22,13 @@ namespace ToDoList.UI
 
         public static void AdicionarPaginas(this IServiceCollection services)
         {
-            services.AddSingleton<PageAdicionarTarefa>();
+            services.AddScoped<PageAdicionarTarefa>();
         }
 
         public static void AdicionarViewModels(this IServiceCollection services)
         {
-            services.AddSingleton<TarefaViewModel>();
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<DescricaoTarefaViewModel>();
         }
 
         public static void AdicionarServicos(this IServiceCollection services)

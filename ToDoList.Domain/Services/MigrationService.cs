@@ -10,8 +10,6 @@ namespace ToDoList.Domain.Services
         public void ExecutarMigrations(ICollection<IMigration> migrations)
         {
             migrations.ForEach(x => x.Up());
-            //foreach (var item in migrations)
-            //    item.Up();
         }
     }
 }

@@ -27,6 +27,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label FontSize="18" Content="Você não tem tarefas listadas"  />
+                <TextBox Text="{Binding ViewModel.Tarefa.Nome}" />
             </Grid>
         </Grid>
         <Grid Visibility="{Binding ViewModel.PopUpAdicionarTarefa}" Grid.RowSpan="2" Background="#dd909999">

@@ -25,36 +25,36 @@ namespace ToDoList.UI.Views.Pages
     {
         private readonly TarefaRepository _repository;
 
-        public PageAdicionarTarefa(TarefaRepository repository)
+        public PageAdicionarTarefa(TarefaRepository repository, DescricaoTarefaViewModel viewModel)
         {
             DataContext = this;
             _repository = repository;
+            ViewModel = viewModel;
             InitializeComponent();
         }
 
-        public TarefaViewModel ViewModel { get; private set; }
+        public MainViewModel ViewModelAnterior { get; private set; }
+        public DescricaoTarefaViewModel ViewModel { get; private set; }
 
-        public void SetViewModel(TarefaViewModel viewModel)
+        public void SetViewModelAnterior(MainViewModel anterior)
         {
-            if (viewModel == null) return;
-
-            ViewModel = viewModel;
+            ViewModelAnterior = anterior;
         }
 
         private void Btn_Cancelar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ViewModel.PopUpAdicionarTarefa = Visibility.Collapsed;
+            ViewModelAnterior.PopUpAdicionarTarefa = Visibility.Collapsed;
         }
 
         private void Btn_Cadastrar_Click(object sender, RoutedEventArgs e)
         {
-            if (!ViewModel.Tarefa.IsValid)
+            if (!ViewModel.TarefaCadastro.IsValid)
             {
                 MessageBox.Show("Favor fornecer os campos obrigatórios");
                 return;
             }
 
-            _repository.AdicionarTarefa(ViewModel.Tarefa);
+            _repository.AdicionarTarefa(ViewModel.TarefaCadastro);
         }
     }
 }

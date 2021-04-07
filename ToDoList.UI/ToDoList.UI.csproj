@@ -95,7 +95,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstraper.cs" />
-    <Compile Include="ViewModels\TarefaViewModel.cs" />
+    <Compile Include="ViewModels\DescricaoTarefaViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

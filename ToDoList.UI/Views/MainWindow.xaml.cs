@@ -24,7 +24,7 @@ namespace ToDoList.UI.Views
     {
         private readonly TarefaRepository _repository;
 
-        public MainWindow(TarefaViewModel viewModel, TarefaRepository repository)
+        public MainWindow(MainViewModel viewModel, TarefaRepository repository)
         {
             ViewModel = viewModel;
             _repository = repository;
@@ -34,7 +34,7 @@ namespace ToDoList.UI.Views
             InitializeComponent();
         }
 
-        public TarefaViewModel ViewModel { get; private set; }
+        public MainViewModel ViewModel { get; private set; }
 
         public void AdicionarTarefa(object sender, RoutedEventArgs e)
         {

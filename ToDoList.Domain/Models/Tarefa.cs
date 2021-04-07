@@ -8,7 +8,7 @@ namespace ToDoList.Domain.Models
         private int _id;
         private string _nome;
         private string _descricao;
-
+        
         public int ID 
         { 
             get => _id;
@@ -49,9 +49,7 @@ namespace ToDoList.Domain.Models
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string nomePropriedade)
-        {
+        private void OnPropertyChanged(string nomePropriedade) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
-        }
     }
 }

@@ -26,14 +26,14 @@ namespace ToDoList.UI
 
         private void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = ConfigurationManager.AppSettings["connectionString"];
-
-            services.AdicionarJanelas();
-            services.AdicionarPaginas();
+            var connectionString = ConfigurationManager.AppSettings["connectionString"];            
 
             services.AdicionarServicos();
             
             services.AdicionarViewModels();
+
+            services.AdicionarJanelas();
+            services.AdicionarPaginas();
 
             services.AdicionarRepositorios(connectionString);
         }
