@@ -23,7 +23,14 @@ namespace ToDoList.Infra.Repositories
 
                     var query = "INSERT INTO tb_tarefa (Nome, Descricao, DataInicio, DataTermino) VALUES (@Nome, @Descricao, @DataInicio, @DataTermino)";
 
-                    var resultado = conexao.Execute(query, tarefa);
+                    var resultado = conexao.Execute(query, new
+                    {
+                        Nome = tarefa.Nome,
+                        Descricao = tarefa.Descricao,
+                        DataInicio = tarefa.DataInicio.ToString("yyyy-MM-dd HH:mm:ss"),
+                        DataTermino = tarefa.DataTermino.ToString("yyyy-MM-dd HH:mm:ss")
+                    });
+
                     Console.WriteLine(resultado);
                 }
             }
