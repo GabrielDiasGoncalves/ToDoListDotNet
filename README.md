@@ -13,6 +13,7 @@ O aplicativo consiste em criar/atualizar/excluir tarefas que usuário precisa re
 - **.NET Framework 4.7.2**
 - **Dapper**
 - **Microsoft Dependency Injection**
+- **System.Data.SQLite**
 
 
 # Arquitetura e Padrões de Projeto
@@ -20,3 +21,4 @@ O aplicativo consiste em criar/atualizar/excluir tarefas que usuário precisa re
 - **MVVM**
 - **Dependency Injection**
 - **Repository Pattern**
+- **Early Return Pattern**
