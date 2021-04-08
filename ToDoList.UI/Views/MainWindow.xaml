@@ -27,7 +27,41 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label FontSize="18" Content="Você não tem tarefas listadas"  />
-                <TextBox Text="{Binding ViewModel.Tarefa.Nome}" />
+            </Grid>
+            <Grid Visibility="{Binding ViewModel.GridComTarefasVisibility}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding ViewModel.TarefasCadastradas.Count, FallbackValue=0}" 
+                           ContentStringFormat="Você tem {0} tarefas" FontSize="13" FontStyle="Italic" />
+                    </StackPanel>
+                </Border>
+                <Border Grid.Row="1" Margin="5,0">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding ViewModel.TarefasCadastradas}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label Content="{Binding Nome}" FontWeight="Bold" />
+                                            <Label Content="{Binding Descricao}" Grid.Row="1" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
             </Grid>
         </Grid>
         <Grid Visibility="{Binding ViewModel.PopUpAdicionarTarefa}" Grid.RowSpan="2" Background="#dd909999">

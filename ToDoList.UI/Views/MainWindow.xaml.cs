@@ -29,7 +29,7 @@ namespace ToDoList.UI.Views
             ViewModel = viewModel;
             _repository = repository;
 
-            ViewModel.TarefasCadastradas = repository.RecuperarTodos();
+            ViewModel.TarefasCadastradas = _repository.RecuperarTodos();
             DataContext = this;
             InitializeComponent();
         }
