@@ -19,7 +19,7 @@ namespace ToDoList.Infra.Migrations
             try
             {
                 var comandoTexto = "CREATE TABLE IF NOT EXISTS tb_tarefa (" +
-                        "ID int, Nome Varchar(50), Descricao Varchar(100), DataInicio Varchar(25), DataTermino Varchar(25))";
+                        "ID Integer Primary Key, Nome Varchar(50), Descricao Varchar(100), DataInicio Varchar(25), DataTermino Varchar(25))";
                 using (var conexao = new SQLiteConnection(_connectionString))
                 using (var comando = new SQLiteCommand(comandoTexto, conexao))
                 {
