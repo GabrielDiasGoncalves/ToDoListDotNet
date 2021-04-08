@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
+using ToDoList.Domain.Models;
 using ToDoList.Infra.Repositories;
 using ToDoList.UI.ViewModels;
 
@@ -38,7 +40,7 @@ namespace ToDoList.UI.Views
 
         public void AdicionarTarefa(object sender, RoutedEventArgs e)
         {
-            ViewModel.PopUpAdicionarTarefa = Visibility.Visible;
+            ViewModel.MostrarPopupTarefa(new Tarefa());
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -46,6 +48,13 @@ namespace ToDoList.UI.Views
             var resultado = MessageBox.Show("Deseja sair?", "Sair", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
             e.Cancel = resultado == MessageBoxResult.No;
+        }
+
+        private void ItemSelecionado_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var tarefaEscolhida = (sender as Border)?.DataContext as Tarefa;
+
+            ViewModel.MostrarPopupTarefa(tarefaEscolhida);
         }
     }
 }

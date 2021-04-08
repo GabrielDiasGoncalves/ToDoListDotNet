@@ -12,7 +12,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <Label Content="Adicionar tarefa" HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" />
+        <Label Content="{Binding ViewModel.TituloPage}" HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" />
         <Border x:Name="Btn_Cancelar" MouseDown="Btn_Cancelar_MouseDown" Style="{StaticResource CancelBorder}" 
                 Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,5,0">
             <Viewbox>

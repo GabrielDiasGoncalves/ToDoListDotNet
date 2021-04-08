@@ -47,7 +47,8 @@
                         <ItemsControl ItemsSource="{Binding ViewModel.TarefasCadastradas}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2">
+                                    <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2"
+                                            MouseDown="ItemSelecionado_MouseDown">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />

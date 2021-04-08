@@ -12,6 +12,7 @@ namespace ToDoList.UI.ViewModels
     public class DescricaoTarefaViewModel : INotifyPropertyChanged
     {
         private Tarefa _tarefaCadastro;
+        private string _tituloPage;
 
         public DescricaoTarefaViewModel()
         {
@@ -25,6 +26,16 @@ namespace ToDoList.UI.ViewModels
             {
                 _tarefaCadastro = value;
                 OnPropertyChanged(nameof(TarefaCadastro));
+            }
+        }
+
+        public string TituloPage 
+        { 
+            get => _tituloPage;
+            set 
+            {
+                _tituloPage = value;
+                OnPropertyChanged(nameof(TituloPage));
             }
         }
 

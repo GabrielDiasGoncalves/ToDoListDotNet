@@ -89,6 +89,14 @@ namespace ToDoList.UI.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public void MostrarPopupTarefa(Tarefa tarefa)
+        {
+            PopUpAdicionarTarefa = Visibility.Visible;
+            PageAddTarefa.SetTarefaParaEdicao(tarefa);
+            PageAddTarefa.ViewModel.TituloPage = string.IsNullOrWhiteSpace(tarefa.Nome) ?
+                "Adicionar Tarefa" : "Atualizar Tarefa";
+        }
+
         private void OnPropertyChanged(string nomePropriedade) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
     }
