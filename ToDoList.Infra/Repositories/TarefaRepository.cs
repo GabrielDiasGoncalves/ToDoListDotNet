@@ -12,7 +12,7 @@ namespace ToDoList.Infra.Repositories
     {
         public TarefaRepository(string connectionString) : base (connectionString) { }
 
-        public void AdicionarTarefa(Tarefa tarefa)
+        public void Adicionar(Tarefa tarefa)
         {
             try
             {
@@ -58,6 +58,11 @@ namespace ToDoList.Infra.Repositories
                 Console.WriteLine(e.Message);
                 return new List<Tarefa>();
             }
+        }
+
+        public void Atualizar()
+        {
+
         }
     }
 }

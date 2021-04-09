@@ -47,7 +47,7 @@ namespace ToDoList.UI.Views.Pages
 
             MessageBox.Show("Tarefa cadastrada com sucesso.");
 
-            _repository.AdicionarTarefa(ViewModel.TarefaCadastro);
+            _repository.Adicionar(ViewModel.TarefaCadastro);
             ViewModelAnterior.PopUpAdicionarTarefa = Visibility.Collapsed;
             ViewModelAnterior.TarefasCadastradas = _repository.RecuperarTodos();
         }
