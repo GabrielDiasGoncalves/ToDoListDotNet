@@ -52,8 +52,14 @@
             <DatePicker Grid.Row="3" Grid.Column="1" Margin="5,5" SelectedDate="{Binding ViewModel.TarefaCadastro.DataInicio, UpdateSourceTrigger=PropertyChanged}" />
             <Label Margin="5,6" Content="Fim: " Grid.Row="4" />
             <DatePicker Grid.Row="4" Grid.Column="1" Margin="5,5" SelectedDate="{Binding ViewModel.TarefaCadastro.DataTermino, UpdateSourceTrigger=PropertyChanged}" />
-            <Button x:Name="Btn_Cadastrar" Content="Salvar tarefa" Grid.Row="5" Grid.ColumnSpan="2" IsEnabled="{Binding ViewModel.Tarefa.IsValid, UpdateSourceTrigger=PropertyChanged}"
+            <Button x:Name="Btn_Cadastrar" Content="Salvar tarefa" Grid.Row="5" Grid.ColumnSpan="2"
+                    Visibility="{Binding ViewModel.BotaoCadastroVisibility}"
+                    IsEnabled="{Binding ViewModel.TarefaCadastro.IsValid, UpdateSourceTrigger=PropertyChanged}"
                     VerticalAlignment="Bottom" Margin="15,12" BorderBrush="#686868" Click="Btn_Cadastrar_Click" />
+            <Button x:Name="Btn_Atualizar" Content="Alterar tarefa" Grid.Row="5" Grid.ColumnSpan="2"
+                    Visibility="{Binding ViewModel.BotaoAlterarVisibility}"
+                    IsEnabled="{Binding ViewModel.TarefaCadastro.IsValid, UpdateSourceTrigger=PropertyChanged}"
+                    VerticalAlignment="Bottom" Margin="15,12" BorderBrush="#686868" Click="Btn_Atualizar_Click" />
         </Grid>
     </Grid>
 </Page>

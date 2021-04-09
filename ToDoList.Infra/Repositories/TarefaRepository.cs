@@ -60,9 +60,32 @@ namespace ToDoList.Infra.Repositories
             }
         }
 
-        public void Atualizar()
+        public void Atualizar(Tarefa tarefa)
         {
+            try
+            {
+                using (var conexao = new SQLiteConnection(ConnectionString))
+                {
+                    conexao.Open();
 
+                    var query = "UPDATE tb_tarefa SET Nome = @Nome, Descricao = @Descricao, DataInicio = @DataInicio, DataTermino = @DataTermino WHERE ID = @ID;";
+
+                    var resultado = conexao.Execute(query, new
+                    {
+                        ID = tarefa.ID,
+                        Nome = tarefa.Nome,
+                        Descricao = tarefa.Descricao,
+                        DataInicio = tarefa.DataInicio.ToString("yyyy-MM-dd HH:mm:ss"),
+                        DataTermino = tarefa.DataTermino.ToString("yyyy-MM-dd HH:mm:ss")
+                    });
+
+                    Console.WriteLine(resultado);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

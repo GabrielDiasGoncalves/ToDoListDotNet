@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 
 using ToDoList.Domain.Models;
+using ToDoList.UI.Enums;
 using ToDoList.UI.Views.Pages;
 
 namespace ToDoList.UI.ViewModels
@@ -90,8 +91,8 @@ namespace ToDoList.UI.ViewModels
         {
             PopUpAdicionarTarefa = Visibility.Visible;
             PageAddTarefa.SetTarefaParaEdicao(tarefa);
-            PageAddTarefa.ViewModel.TituloPage = string.IsNullOrWhiteSpace(tarefa.Nome) ?
-                "Adicionar Tarefa" : "Atualizar Tarefa";
+            PageAddTarefa.ViewModel.TiposOperacao = string.IsNullOrWhiteSpace(tarefa.Nome) ?
+                TiposOperacaoPage.Cadastro : TiposOperacaoPage.Atualizar;
         }
 
         private void OnPropertyChanged(string nomePropriedade) =>

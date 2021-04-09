@@ -44,10 +44,27 @@ namespace ToDoList.UI.Views.Pages
                 MessageBox.Show("Favor fornecer os campos obrigatórios");
                 return;
             }
-
-            MessageBox.Show("Tarefa cadastrada com sucesso.");
-
+ 
             _repository.Adicionar(ViewModel.TarefaCadastro);
+
+            MessageBox.Show($"Tarefa cadastrada com sucesso.");
+                        
+            ViewModelAnterior.PopUpAdicionarTarefa = Visibility.Collapsed;
+            ViewModelAnterior.TarefasCadastradas = _repository.RecuperarTodos();
+        }
+
+        private void Btn_Atualizar_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ViewModel.TarefaCadastro.IsValid)
+            {
+                MessageBox.Show("Favor fornecer os campos obrigatórios");
+                return;
+            }
+
+            _repository.Atualizar(ViewModel.TarefaCadastro);
+
+            MessageBox.Show($"Tarefa alterada com sucesso.");
+
             ViewModelAnterior.PopUpAdicionarTarefa = Visibility.Collapsed;
             ViewModelAnterior.TarefasCadastradas = _repository.RecuperarTodos();
         }
