@@ -39,7 +39,7 @@
                 </Grid.RowDefinitions>
                 <Border>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding ViewModel.TarefasCadastradas.Count, FallbackValue=0}" 
+                        <Label Content="{Binding ViewModel.TarefasCadastradas.Count, FallbackValue=0}"
                            ContentStringFormat="Você tem {0} tarefas" FontSize="15" FontStyle="Italic" />
                     </StackPanel>
                 </Border>
@@ -49,7 +49,8 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2"
-                                            MouseDown="ItemSelecionado_MouseDown" Margin="10,5">
+                                            MouseDown="ItemSelecionado_MouseDown" Margin="10,5" MouseMove="Tarefa_MouseMove"
+                                            MouseLeave="Tarefa_MouseLeave">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -59,8 +60,12 @@
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
+                                            <Popup>
+                                                <Label Content="{Binding MensagemStatus}" Foreground="White" />
+                                            </Popup>
                                             <Ellipse Width="20" Height="20" Stroke="Black" StrokeThickness="2" 
-                                                     Fill="{Binding CorStatus, Converter={StaticResource ColorConversor}}" />
+                                                     Fill="{Binding CorStatus, Converter={StaticResource ColorConversor}}" >
+                                            </Ellipse>
                                             <Label Content="{Binding Nome}" FontWeight="Bold" />
                                             <Label Content="{Binding Descricao}" Grid.Row="1" />
                                         </Grid>

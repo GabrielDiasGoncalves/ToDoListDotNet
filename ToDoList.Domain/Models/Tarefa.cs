@@ -69,6 +69,7 @@ namespace ToDoList.Domain.Models
                 OnPropertyChanged(nameof(DataTermino));
                 OnPropertyChanged(nameof(IsValid));
                 OnPropertyChanged(nameof(CorStatus));
+                OnPropertyChanged(nameof(MensagemStatus));
             }
         }
 
@@ -82,6 +83,10 @@ namespace ToDoList.Domain.Models
                     hoje == DataTermino.Date ? _corDiaFinal : _corAtrasado;
             }
         }
+
+        public string MensagemStatus =>
+            CorStatus == Color.Blue ? "Tarefa está no prazo" :
+            CorStatus == Color.Green ? "Data de entrega da tarefa" : "Tarefa atrasada";
 
         public bool IsValid =>
             !string.IsNullOrWhiteSpace(Nome) && 
