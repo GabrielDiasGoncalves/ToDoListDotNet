@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList.UI.Views"
+        xmlns:conversores="clr-namespace:ToDoList.UI.Converters"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         mc:Ignorable="d" Height="550" Width="420" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Window.Resources>
+        <conversores:ColorToSolidColorBrushValueConverter x:Key="ColorConversor" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -55,7 +59,8 @@
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
-                                            <Ellipse Width="20" Height="20" Stroke="Black" Fill="Red" StrokeThickness="2" />
+                                            <Ellipse Width="20" Height="20" Stroke="Black" StrokeThickness="2" 
+                                                     Fill="{Binding CorStatus, Converter={StaticResource ColorConversor}}" />
                                             <Label Content="{Binding Nome}" FontWeight="Bold" />
                                             <Label Content="{Binding Descricao}" Grid.Row="1" />
                                         </Grid>
