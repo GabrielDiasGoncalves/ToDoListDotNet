@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,6 +21,7 @@ namespace ToDoList.UI.Views.Pages
             DataContext = this;
             _repository = repository;
             ViewModel = viewModel;
+
             InitializeComponent();
         }
 
@@ -29,8 +31,17 @@ namespace ToDoList.UI.Views.Pages
         public void SetViewModelAnterior(MainViewModel anterior) =>
             ViewModelAnterior = anterior;
 
-        public void SetTarefaParaEdicao(Tarefa tarefa) =>
+        public void SetTarefaParaEdicao(Tarefa tarefa)
+        {
             ViewModel.TarefaCadastro = tarefa;
+            if (string.IsNullOrWhiteSpace(tarefa.Nome))
+            {
+                var hoje = DateTime.Now;
+                
+                ViewModel.TarefaCadastro.DataInicio = hoje;
+                ViewModel.TarefaCadastro.DataTermino = hoje.AddDays(10);
+            }
+        }
 
         private void Btn_Cancelar_MouseDown(object sender, MouseButtonEventArgs e)
         {

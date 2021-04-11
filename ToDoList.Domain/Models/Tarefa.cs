@@ -8,6 +8,8 @@ namespace ToDoList.Domain.Models
         private int _id;
         private string _nome;
         private string _descricao;
+        private DateTime _dataInicio;
+        private DateTime _dataTermino;
         
         public int ID 
         { 
@@ -41,11 +43,32 @@ namespace ToDoList.Domain.Models
             }
         }
         
-        public DateTime DataInicio { get; set; }
-        public DateTime DataTermino { get; set; }
+        public DateTime DataInicio 
+        {
+            get => _dataInicio;
+            set
+            {
+                _dataInicio = value;
+                OnPropertyChanged(nameof(DataInicio));
+                OnPropertyChanged(nameof(IsValid));
+            }
+        }
+
+        public DateTime DataTermino 
+        {
+            get => _dataTermino;
+            set
+            {
+                _dataTermino = value;
+                OnPropertyChanged(nameof(DataTermino));
+                OnPropertyChanged(nameof(IsValid));
+            }
+        }
 
         public bool IsValid =>
-            !string.IsNullOrWhiteSpace(Nome) && !string.IsNullOrWhiteSpace(Descricao);
+            !string.IsNullOrWhiteSpace(Nome) && 
+            !string.IsNullOrWhiteSpace(Descricao) &&
+            !(DataTermino < DataInicio);
 
         public event PropertyChangedEventHandler PropertyChanged;
 
