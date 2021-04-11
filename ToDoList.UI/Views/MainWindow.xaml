@@ -36,7 +36,7 @@
                 <Border>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding ViewModel.TarefasCadastradas.Count, FallbackValue=0}" 
-                           ContentStringFormat="Você tem {0} tarefas" FontSize="13" FontStyle="Italic" />
+                           ContentStringFormat="Você tem {0} tarefas" FontSize="15" FontStyle="Italic" />
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="1" Margin="5,0">
@@ -51,6 +51,11 @@
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Ellipse Width="20" Height="20" Stroke="Black" Fill="Red" StrokeThickness="2" />
                                             <Label Content="{Binding Nome}" FontWeight="Bold" />
                                             <Label Content="{Binding Descricao}" Grid.Row="1" />
                                         </Grid>
