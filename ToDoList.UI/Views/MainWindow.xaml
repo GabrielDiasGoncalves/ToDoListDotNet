@@ -33,9 +33,6 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
                 <Border>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding ViewModel.TarefasCadastradas.Count, FallbackValue=0}" 
@@ -48,7 +45,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2"
-                                            MouseDown="ItemSelecionado_MouseDown">
+                                            MouseDown="ItemSelecionado_MouseDown" Margin="10,5">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
