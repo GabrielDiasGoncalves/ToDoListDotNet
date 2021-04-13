@@ -98,6 +98,7 @@
     <Compile Include="Bootstraper.cs" />
     <Compile Include="Converters\ColorToSolidColorBrushValueConverter.cs" />
     <Compile Include="Enums\TiposOperacaoPage.cs" />
+    <Compile Include="Factory\MigrationFactory.cs" />
     <Compile Include="ViewModels\DescricaoTarefaViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

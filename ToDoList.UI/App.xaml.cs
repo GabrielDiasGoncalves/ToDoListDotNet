@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
+
 using System.Configuration;
 using System.Windows;
 
-using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Services;
-using ToDoList.Infra.Migrations;
+using ToDoList.UI.Factory;
 using ToDoList.UI.Views;
 
 namespace ToDoList.UI
@@ -29,6 +28,7 @@ namespace ToDoList.UI
             var connectionString = ConfigurationManager.AppSettings["connectionString"];            
 
             services.AdicionarServicos();
+            services.AdicionarFactory();
             
             services.AdicionarViewModels();
 
@@ -44,14 +44,11 @@ namespace ToDoList.UI
             mainWindow.Show();
 
             var migrationService = _serviceProvider.GetService<MigrationService>();
+            var factory = _serviceProvider.GetService<MigrationFactory>();
 
             var connectionString = ConfigurationManager.AppSettings["connectionString"].ToString();
 
-            var migrations = new List<IMigration>()
-            {
-                new CriarBanco(),
-                new CriarTabelaTarefa(connectionString)
-            };
+            var migrations = factory.Criar(connectionString);
 
             migrationService.ExecutarMigrations(migrations);
         }
