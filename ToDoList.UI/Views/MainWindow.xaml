@@ -63,11 +63,11 @@
                                             <Popup>
                                                 <Label Content="{Binding MensagemStatus}" Foreground="White" />
                                             </Popup>
-                                            <Ellipse Width="20" Height="20" Stroke="Black" StrokeThickness="2" 
-                                                     Fill="{Binding CorStatus, Converter={StaticResource ColorConversor}}" >
-                                            </Ellipse>
                                             <Label Content="{Binding Nome}" FontWeight="Bold" />
-                                            <Label Content="{Binding Descricao}" Grid.Row="1" />
+                                            <Ellipse Width="20" Height="20" Stroke="Black" StrokeThickness="2" Grid.Column="1"
+                                                     Fill="{Binding CorStatus, Converter={StaticResource ColorConversor}}" />
+                                            
+                                            <Label Content="{Binding DescricaoAbreviada}" Grid.Row="1" />
                                         </Grid>
                                     </Border>
                                 </DataTemplate>

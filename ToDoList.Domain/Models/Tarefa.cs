@@ -46,6 +46,18 @@ namespace ToDoList.Domain.Models
                 _descricao = value;
                 OnPropertyChanged(nameof(Descricao));
                 OnPropertyChanged(nameof(IsValid));
+                OnPropertyChanged(nameof(DescricaoAbreviada));
+            }
+        }
+
+        public string DescricaoAbreviada
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Descricao))
+                    return string.Empty;
+
+                return Descricao.Length >= 19 ? Descricao.Substring(0, 19) + "..." : Descricao;
             }
         }
         
