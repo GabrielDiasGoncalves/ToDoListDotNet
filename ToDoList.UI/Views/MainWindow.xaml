@@ -49,8 +49,27 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="#606060" CornerRadius="2"
-                                            MouseDown="ItemSelecionado_MouseDown" Margin="10,5" MouseMove="Tarefa_MouseMove"
-                                            MouseLeave="Tarefa_MouseLeave">
+                                            MouseDown="ItemSelecionado_MouseDown" Margin="10,5" >
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="MouseMove">
+                                                <BeginStoryboard>
+                                                    <Storyboard TargetName="Pop" TargetProperty="IsOpen">
+                                                        <BooleanAnimationUsingKeyFrames  FillBehavior="HoldEnd">
+                                                            <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True" />
+                                                        </BooleanAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="MouseLeave">
+                                                <BeginStoryboard>
+                                                    <Storyboard TargetName="Pop" TargetProperty="IsOpen">
+                                                        <BooleanAnimationUsingKeyFrames FillBehavior="HoldEnd">
+                                                            <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False" />
+                                                        </BooleanAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Border.Triggers>
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -60,7 +79,7 @@
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
-                                            <Popup>
+                                            <Popup x:Name="Pop">
                                                 <Label Content="{Binding MensagemStatus}" Foreground="White" />
                                             </Popup>
                                             <Label Content="{Binding Nome}" FontWeight="Bold" />

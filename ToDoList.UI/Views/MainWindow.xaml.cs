@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 using ToDoList.Domain.Models;
@@ -47,27 +45,6 @@ namespace ToDoList.UI.Views
             var tarefaEscolhida = (sender as Border)?.DataContext as Tarefa;
 
             ViewModel.MostrarPopupTarefa(tarefaEscolhida);
-        }
-
-        private void Tarefa_MouseMove(object sender, MouseEventArgs e)
-        {
-            var popup = GetPopup(sender);
-
-            popup.IsOpen = true;
-        }
-
-        private void Tarefa_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var popup = GetPopup(sender);
-
-            popup.IsOpen = false;
-        }
-
-        private Popup GetPopup(object sender)
-        {
-            var grid = ((sender as Border)?.Child as Grid)?.Children?.OfType<UIElement>();
-
-            return grid.FirstOrDefault(x => x is Popup) as Popup;
         }
     }
 }
